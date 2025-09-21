@@ -1,6 +1,9 @@
 import math
+import pygame as pg
 
 class Utils:
+    keys = pg.key.get_pressed()
+    old_keys = pg.key.get_pressed()
 
     @staticmethod
     def distance(p1, p2):
@@ -13,3 +16,12 @@ class Utils:
     @staticmethod
     def x_y_to_vector(x, y):
         return Utils.distance([x, 0], [0, y])
+
+    @staticmethod
+    def is_key_pressed(key):
+        return Utils.old_keys[key] != Utils.keys[key] and Utils.old_keys[key]
+
+    @staticmethod
+    def update_keys():
+        Utils.old_keys = Utils.keys
+        Utils.keys = pg.key.get_pressed()
