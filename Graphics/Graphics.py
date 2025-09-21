@@ -1,7 +1,7 @@
 import pygame as pg
 
 class Graphics:
-    def open_window(self):
+    def __init__(self):
         self.win = pg.display.set_mode((700, 300))
         pg.display.set_caption("You VS x")
 

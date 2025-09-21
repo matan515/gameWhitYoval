@@ -26,7 +26,7 @@ class Player:
             self.stamina -= 20
             for enemy in enemies:
                 if self.range <= Utils.distance([self.x_pos, self.y_pos], [enemy.x_pos, enemy.y_pos]):
-                    enemy.take_damage(100)
+                    enemy.take_damage()
 
     def update(self):
         self.punch_cooldown -= 1
