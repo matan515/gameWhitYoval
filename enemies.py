@@ -1,14 +1,15 @@
 import Utils
 import pygame as pg
 import math
+import random
 
 class Player:
 
     def __init__(self):
         self.health = 100
         self.stamina = 100
-        self.x_pos = 250
-        self.y_pos = 200
+        self.x_pos = random.randint(0, 800)
+        self.y_pos = random.randint(0, 600)
         self.range = 10
         self.punch_cooldown = 0 #in frames
         self.player_x=x
