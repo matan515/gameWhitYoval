@@ -26,8 +26,7 @@ class enemies:
 
     def punch(self, plyer):
         if self.punch_cooldown <= 0:
-            self.punch_cooldown += 72 - (self.stamina / 100)
-            self.stamina -= 20
+            self.punch_cooldown = 120
             if self.range <= Utils.distance([self.x_pos, self.y_pos], [plyer.x_pos, plyer.y_pos]):
                 plyer.take_damage()
 
