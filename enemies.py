@@ -14,6 +14,7 @@ class enemies:
         self.punch_cooldown = 0 #in frames
         self.player_x=x
         self.player_y=y
+        self.playerPunch_cooldown =0
 
     def take_damage(self, damage=100):
         self.health -= damage
@@ -36,5 +37,4 @@ class enemies:
                 enemies.take_damage()
 
     def update(self):
-        self.punch_cooldown -= 1
-        self.stamina += 1
+        self.playerPunch_cooldown -= 5
