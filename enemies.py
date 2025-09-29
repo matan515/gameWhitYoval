@@ -3,7 +3,7 @@ import pygame as pg
 import math
 import random
 
-class Player:
+class enemies:
 
     def __init__(self):
         self.health = 100
