@@ -20,15 +20,20 @@ class enemies:
 
     def move(self):
         distanc = math.sqrt((self.player_x - self.x_pos) ** 2 + (self.player_y - self.y_pos) ** 2)
-        direction = math
+        # dx = direction in x
+        dx =self.x_pos - self.player_x
+        #dy = direction in x
+        dy = self.x_pos - self.player_x
+        directionInRadios = math.atan(dy/dx)
+        direction = math.degrees(directionInRadios)
         self.x_pos += Utils.vector_to_x_y(direction, self.stamina)[0]
         self.y_pos += Utils.vector_to_x_y(direction, self.stamina)[1]
 
-    def punch(self, plyer):
+    def punch(self, enemies):
         if self.punch_cooldown <= 0:
             self.punch_cooldown = 120
             if self.range <= Utils.distance([self.x_pos, self.y_pos], [plyer.x_pos, plyer.y_pos]):
-                plyer.take_damage()
+                enemies.take_damage()
 
     def update(self):
         self.punch_cooldown -= 1
