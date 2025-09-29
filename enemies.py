@@ -15,7 +15,7 @@ class enemies:
         self.player_x=x
         self.player_y=y
 
-    def take_damage(self, damage=5):
+    def take_damage(self, damage=100):
         self.health -= damage
 
     def move(self):
