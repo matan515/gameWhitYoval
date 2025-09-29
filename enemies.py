@@ -19,7 +19,8 @@ class enemies:
         self.health -= damage
 
     def move(self):
-        direction = math.sqrt((self.player_x - self.x_pos) ** 2 + (self.player_y - self.y_pos) ** 2)
+        distanc = math.sqrt((self.player_x - self.x_pos) ** 2 + (self.player_y - self.y_pos) ** 2)
+        direction = math
         self.x_pos += Utils.vector_to_x_y(direction, self.stamina)[0]
         self.y_pos += Utils.vector_to_x_y(direction, self.stamina)[1]
 
@@ -27,9 +28,8 @@ class enemies:
         if self.punch_cooldown <= 0:
             self.punch_cooldown += 72 - (self.stamina / 100)
             self.stamina -= 20
-            for plyer in plyer:
-                if self.range <= Utils.distance([self.x_pos, self.y_pos], [plyer.x_pos, plyer.y_pos]):
-                    plyer.take_damage()
+            if self.range <= Utils.distance([self.x_pos, self.y_pos], [plyer.x_pos, plyer.y_pos]):
+                plyer.take_damage()
 
     def update(self):
         self.punch_cooldown -= 1
