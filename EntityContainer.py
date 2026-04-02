@@ -1,7 +1,5 @@
-import pygame
 import Player
 import Enemy
-import Utils
 
 class EntityContainer:
     def __init__(self):

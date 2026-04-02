@@ -19,7 +19,15 @@ class Vector:
     def __sub__(self, other):
         return Vector(self.x_pos - other.x_pos, self.y_pos - other.y_pos)
 
+    def __str__(self):
+        return str(self.x_pos) + " " + str(self.y_pos)
+
     def rotate(self, angle):
         self.angle += angle
         self.x_pos += self.distance * math.cos(angle)
         self.y_pos += self.distance * math.sin(angle)
+
+    def set_distance(self, length):
+        self.distance = length
+        self.x_pos += self.distance * math.cos(math.radians(self.angle))
+        self.y_pos += self.distance * math.sin(math.radians(self.angle))

@@ -1,7 +1,6 @@
-import math
 import pygame as pg
 
-class Utils:
+class PygameUtils:
     keys = pg.key.get_pressed()
     old_keys = pg.key.get_pressed()
 
@@ -20,6 +19,6 @@ class Utils:
         return False
 
     @staticmethod
-    def update_keys():
-        Utils.old_keys = Utils.keys
-        Utils.keys = pg.key.get_pressed()
+    def update():
+        PygameUtils.old_keys = PygameUtils.keys
+        PygameUtils.keys = pg.key.get_pressed()

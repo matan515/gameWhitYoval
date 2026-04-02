@@ -1,13 +1,14 @@
-import Utils
 import Player
 import random
+from Utils import Vector
+
 
 class Enemy(Player.Player):
 
     def __init__(self):
+        super().__init__()
         self.health = 100
-        self.x_pos = 500
-        self.y_pos = random.randint(50, 250)
+        self.pos = Vector.Vector(500, random.randint(50, 250))
         self.range = 10
 
     def take_damage(self, damage=100):
@@ -20,8 +21,7 @@ class Enemy(Player.Player):
 
     def update(self, player):
         self.punch_cooldown -= 1
-        if Utils.Utils.distance([self.x_pos, self.y_pos], [player.x_pos, player.y_pos]) < self.range:
-            self.move(Utils.Utils.angle([self.x_pos, self.y_pos], [player.x_pos, player.y_pos]), Utils.Utils.distance([self.x_pos, self.y_pos], [player.x_pos, player.y_pos]))
+        self.pos += (player.pos - self.pos).set_distance(min(self.range, (player.pos - self.pos).distance))
+
+        if player.pos - self.pos < self.range:
             self.punch(player)
-        else:
-            self.move(Utils.Utils.angle([self.x_pos, self.y_pos], [player.x_pos, player.y_pos]), self.range)
