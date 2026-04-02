@@ -1,2 +1,0 @@
-# gameWhitYoval
-game
