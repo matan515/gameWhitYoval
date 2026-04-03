@@ -1,15 +1,16 @@
 import Player
 import random
-from Utils import Vector
+import Utils.Vector as Vector
 
 
 class Enemy(Player.Player):
 
     def __init__(self):
         super().__init__()
-        self.health = 100
         self.pos = Vector.Vector(500, random.randint(50, 250))
-        self.range = 10
+
+    def __str__(self):
+        return str(self.health) + " " + str(self.stamina)
 
     def take_damage(self, damage=100):
         self.health -= damage

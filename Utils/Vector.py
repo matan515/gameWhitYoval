@@ -1,11 +1,11 @@
 import math
 
 class Vector:
-    def __init__(self, x_pos, y_pos):
-        self.x_pos = x_pos
-        self.y_pos = y_pos
-        self.distance = math.sqrt(x_pos**2 + y_pos**2)
-        self.angle = math.atan2(y_pos, x_pos)
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.distance = math.sqrt(x**2 + y**2)
+        self.angle = math.atan2(y, x)
 
     @classmethod
     def from_polar(cls, distance, angle):
@@ -14,20 +14,23 @@ class Vector:
         return cls(x, y)
 
     def __add__(self, other):
-        return Vector(self.x_pos + other.x_pos, self.y_pos + other.y_pos)
+        return Vector(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other):
-        return Vector(self.x_pos - other.x_pos, self.y_pos - other.y_pos)
+        return Vector(self.x - other.x, self.y - other.y)
 
     def __str__(self):
-        return str(self.x_pos) + " " + str(self.y_pos)
+        return str(self.x) + " " + str(self.y)
+
+    def __bool__(self):
+        return bool(self.distance)
 
     def rotate(self, angle):
         self.angle += angle
-        self.x_pos += self.distance * math.cos(angle)
-        self.y_pos += self.distance * math.sin(angle)
+        self.x += self.distance * math.cos(angle)
+        self.y += self.distance * math.sin(angle)
 
     def set_distance(self, length):
         self.distance = length
-        self.x_pos += self.distance * math.cos(math.radians(self.angle))
-        self.y_pos += self.distance * math.sin(math.radians(self.angle))
+        self.x += self.distance * math.cos(self.angle)
+        self.y += self.distance * math.sin(self.angle)

@@ -1,24 +1,20 @@
 import pygame as pg
 
 class PygameUtils:
-    keys = pg.key.get_pressed()
-    old_keys = pg.key.get_pressed()
-
-    @staticmethod
-    def is_key_held(key):
-        keys = pg.key.get_pressed()
-        return keys[key]
-
-    @staticmethod
-    def is_key_pressed(key):
-
-        for event in pg.event.get():
-            if event.type == pg.KEYDOWN:
-                if event.key == key:
-                    return True
-        return False
+    keys = None
+    old_keys = None
+    events = []
 
     @staticmethod
     def update():
         PygameUtils.old_keys = PygameUtils.keys
         PygameUtils.keys = pg.key.get_pressed()
+        PygameUtils.events = pg.event.get()
+
+    @staticmethod
+    def is_key_held(key):
+        return PygameUtils.keys[key]
+
+    @staticmethod
+    def is_key_pressed(key):
+        return PygameUtils.keys[key] and not PygameUtils.old_keys[key]

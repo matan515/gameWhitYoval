@@ -6,7 +6,7 @@ import EntityContainer
 import pygame as pg
 import time
 import Constants as Const
-from Utils import PygameUtils as pgUtils
+import Utils.PygameUtils as pgUtils
 
 game = EntityContainer.EntityContainer()
 last_time = time.time()
