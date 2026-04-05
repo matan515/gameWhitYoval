@@ -9,6 +9,7 @@ import Constants as Const
 import Utils.PygameUtils as pgUtils
 
 game = EntityContainer.EntityContainer()
+game.start_level()
 last_time = time.time()
 run = True
 while run:
@@ -21,8 +22,9 @@ while run:
             if event.key == pg.K_ESCAPE:
                 run = False
     if game.is_enemies_dead():
+        game.set_level(game.level + 1)
         game.start_level()
-        print("level up to: ", game.level)
+        print("main27: level up to: ", game.level)
 
     pgUtils.PygameUtils.update()
     game.update()

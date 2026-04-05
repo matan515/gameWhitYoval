@@ -20,8 +20,10 @@ class EntityContainer:
 
         for enemy in self.enemies:
             if enemy.health <= 0:
-                print(str(self.enemies[0]))
-                self.enemies.remove(self.enemies.index(enemy))
+                print("EntityContainer23: ", str(enemy))
+                self.enemies.remove(enemy)
+            else:
+                enemy.update(self.player)
 
     def is_enemies_dead(self):
         if len(self.enemies) == 0:

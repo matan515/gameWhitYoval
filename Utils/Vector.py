@@ -20,7 +20,7 @@ class Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
     def __str__(self):
-        return str(self.x) + " " + str(self.y)
+        return "x: " + str(self.x) + " y: " + str(self.y) + " distance: " + str(self.distance) + " angle: " + str(self.angle)
 
     def __bool__(self):
         return bool(self.distance)
